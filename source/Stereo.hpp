@@ -10,6 +10,7 @@
 #include <iterator>
 #include <stdio.h>
 #include <stdlib.h>
+#include <cmath>
 
 class Stereo {
   private:
@@ -23,6 +24,12 @@ class Stereo {
     cv::Mat mTranslationVector;
     cv::Mat mEssentialMatrix;
     cv::Mat mFundamentalMatrix;
+    cv::Mat mLeftRotation;
+    cv::Mat mLeftTranslation;
+    cv::Mat mRightRotation;
+    cv::Mat mRightTranslation;
+    cv::Mat mRMapLeft[2];
+    cv::Mat mRMapRight[2];
   public:
     Stereo();
     Stereo(
@@ -30,7 +37,7 @@ class Stereo {
         cv::Mat rightCameraMatrix,
         cv::Mat leftDistCoeffs,
         cv::Mat rightDistCoeffs
-        )
+        );
     void calibrate(
         std::vector<cv::Mat> leftImages,
         std::vector<cv::Mat> rightImages
@@ -39,8 +46,8 @@ class Stereo {
     void detectChessBoardCorners( 
         const std::vector<cv::Mat> &leftImages,
         const std::vector<cv::Mat> &rightImages,
-        std::vector<std::vector<<cv::Point2f> > &leftImagePoints,
-        std::vector<std::vector<<cv::Point2f> > &rightImagePoints,
+        std::vector<std::vector<cv::Point2f> > &leftImagePoints,
+        std::vector<std::vector<cv::Point2f> > &rightImagePoints,
         std::vector<cv::Mat> goodLeftImages,
         std::vector<cv::Mat> goodRightImages,
         cv::Size boardSize,
@@ -49,7 +56,7 @@ class Stereo {
 
     void generateObjectPoints(
         cv::Size boardSize,
-        std::vector<std:vector<cv::Point3f> > &objectPoints,
+        std::vector<std::vector<cv::Point3f> > &objectPoints,
         int squareSize,
         int numGoodImages
         );
