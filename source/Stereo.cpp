@@ -20,8 +20,8 @@ void Stereo::detectChessBoardCorners(
     const std::vector<cv::Mat> &rightImages,
     std::vector<std::vector<cv::Point2f> > &leftImagePoints,
     std::vector<std::vector<cv::Point2f> > &rightImagePoints,
-    std::vector<cv::Mat> goodLeftImages,
-    std::vector<cv::Mat> goodRightImages,
+    std::vector<cv::Mat> &goodLeftImages,
+    std::vector<cv::Mat> &goodRightImages,
     cv::Size boardSize,
     bool displayCorners
     ) {
@@ -68,6 +68,7 @@ void Stereo::detectChessBoardCorners(
         cv::CALIB_CB_ADAPTIVE_THRESH | \
         cv::CALIB_CB_NORMALIZE_IMAGE
         );
+
     // Step 2d : If chess board corners were found in the right image refine the position of the 
     // corners.
     if (foundRight) {
@@ -155,7 +156,6 @@ void Stereo::calibrate(
       boardSize,
       true
       );
-
   // Step 2 : Using the good images (i.e. images in which corners can 
   //          be detected) generate a vector of object points
   int numGoodImages = goodLeftImages.size();
@@ -386,7 +386,7 @@ void Stereo::calibrate(
     cv::rectangle(canvasRightPart, vroiRight, cv::Scalar(0, 0, 255), 3, 8);
 
     for (int j = 0; j < canvas.rows; j += 16) {
-      cv::line(canvas, cv::Point(j, 0), cv::Point(j, canvas.rows), cv::Scalar(0, 255, 0), 1, 8);
+      cv::line(canvas, cv::Point(0, j), cv::Point(canvas.cols, j), cv::Scalar(0, 255, 0), 1, 8);
     }
     
     cv::namedWindow("Rectified", cv::WINDOW_AUTOSIZE);

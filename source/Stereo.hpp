@@ -39,8 +39,11 @@ class Stereo {
         cv::Mat rightDistCoeffs
         );
     void calibrate(
-        std::vector<cv::Mat> leftImages,
-        std::vector<cv::Mat> rightImages
+        const std::vector<cv::Mat> &leftImages,
+        const std::vector<cv::Mat> &rightImages,
+        cv::Size boardSize,
+        int squareSize,
+        cv::Size imageSize
         );
   private:
     void detectChessBoardCorners( 
@@ -48,8 +51,8 @@ class Stereo {
         const std::vector<cv::Mat> &rightImages,
         std::vector<std::vector<cv::Point2f> > &leftImagePoints,
         std::vector<std::vector<cv::Point2f> > &rightImagePoints,
-        std::vector<cv::Mat> goodLeftImages,
-        std::vector<cv::Mat> goodRightImages,
+        std::vector<cv::Mat> &goodLeftImages,
+        std::vector<cv::Mat> &goodRightImages,
         cv::Size boardSize,
         bool displayCorners
         );
