@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
   cv::Mat leftDistCoeffs;
   cv::Mat rightDistCoeffs;
 
-  cv::Size boardSize = cv::Size(9, 6);
+  cv::Size boardSize = cv::Size(8, 6);
   int squareSize = 3;
   cv::Size imageSize = cv::Size(640, 480);
 
@@ -50,7 +50,8 @@ int main(int argc, char **argv) {
   }
   readImageToVector(leftImageFs, leftImages);
   
-  
+  std::cout << leftImages.size() << std::endl;
+
   // Step 2 : Load the right images
   cv::FileStorage rightImageFs(rightImageList, cv::FileStorage::READ);
   if (!rightImageFs.isOpened()) {
@@ -114,6 +115,11 @@ int main(int argc, char **argv) {
   // Step 8 : Load the camera distortion co-efficients coreesponding 
   //          to right camera
   rightCameraFs["distortion_coefficients"] >> rightDistCoeffs;
+  
+  // std::cout << leftCameraMatrix << std::endl;
+  // std::cout << leftDistCoeffs << std::endl;
+  // std::cout << rightDistCoeffs << std::endl;
+  // std::cout << rightCameraMatrix << std::endl;
 
   Stereo stereoEngine(
       leftCameraMatrix,

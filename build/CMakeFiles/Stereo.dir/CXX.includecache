@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ganesh/Workspace_test/Stereo/source/Stereo.hpp
+opencv2/calib3d/calib3d.hpp
+/home/ganesh/Workspace_test/Stereo/source/opencv2/calib3d/calib3d.hpp
+opencv2/imgcodecs.hpp
+/home/ganesh/Workspace_test/Stereo/source/opencv2/imgcodecs.hpp
+opencv2/highgui/highgui.hpp
+/home/ganesh/Workspace_test/Stereo/source/opencv2/highgui/highgui.hpp
+opencv2/imgproc/imgproc.hpp
+/home/ganesh/Workspace_test/Stereo/source/opencv2/imgproc/imgproc.hpp
+vector
+-
+string
+-
+algorithm
+-
+iostream
+-
+iterator
+-
+stdio.h
+-
+stdlib.h
+-
+cmath
+-
+
+/home/ganesh/Workspace_test/Stereo/source/main.cpp
+Stereo.hpp
+/home/ganesh/Workspace_test/Stereo/source/Stereo.hpp
+

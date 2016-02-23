@@ -159,6 +159,7 @@ void Stereo::calibrate(
   // Step 2 : Using the good images (i.e. images in which corners can 
   //          be detected) generate a vector of object points
   int numGoodImages = goodLeftImages.size();
+  std::cout << numGoodImages << std::endl;
   std::vector<std::vector<cv::Point3f> > objectPoints;
   generateObjectPoints(
       boardSize,
