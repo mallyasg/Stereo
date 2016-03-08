@@ -395,3 +395,14 @@ void Stereo::calibrate(
     cv::waitKey(0);
   }
 }
+
+void Stereo::computeDepth(
+    cv::Mat leftImage, 
+    cv::Mat rightImage, 
+    int numDisparity=16, 
+    int blockSize=15
+    ) {
+
+  cv::Ptr<cv::StereoBM> bm = cv::StereoBM::create(numDisparity, blockSize);
+  
+}
